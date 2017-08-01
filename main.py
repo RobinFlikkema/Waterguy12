@@ -29,7 +29,6 @@ while True:
         d = datetime.datetime.utcnow()
         unixtime = calendar.timegm(d.utctimetuple())
         if "u/waterguy12" in comment.body and comment.created_utc > unixtime - 86400 and comment.id not in comments_replied_to:
-            comment.upvote()
             not_replied = True
             while not_replied:
                 try:
