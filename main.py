@@ -1,9 +1,7 @@
 import calendar
 import os
-
 import datetime
 from time import sleep
-
 import praw
 from praw.exceptions import APIException
 
@@ -12,8 +10,9 @@ reddit = praw.Reddit(client_id='xx',
                      password='xx',
                      user_agent='waterguy12 tag bot liker',
                      username='xx')
-
+# This should return your username
 print(reddit.user.me())
+# Main Loop
 while True:
     # start where left off
     print("Reading where i left off")
@@ -25,6 +24,7 @@ while True:
             comments_replied_to = comments_replied_to.split("\n")
             comments_replied_to = list(filter(None, comments_replied_to))
 
+    # Loop comments        
     for comment in reddit.redditor('waterguy12_tag_bot').comments.new(limit=1000):
         d = datetime.datetime.utcnow()
         unixtime = calendar.timegm(d.utctimetuple())
